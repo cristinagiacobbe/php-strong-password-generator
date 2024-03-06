@@ -15,20 +15,19 @@ Verificato il corretto funzionamento del nostro codice,
 spostiamo la logica in un file functions.php che includeremo poi nella pagina principale */
 
 
-//var_dump(mt_rand(0, strlen($password)))
-//echo substr($str, 0, 5); // Hello
 
-function generateRandPass($lenght)
+
+function generateRandPass($length)
 {
     $possibileChar = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890|!£$%&/()=?^";
     $password = "";
 
-    for ($i = 0; $i < $lenght; $i++) {
+    for ($i = 0; $i < $length; $i++) {
         $password .= substr($possibileChar, rand(0, strlen($possibileChar) - 1), 1);
     }
     return $password;
 }
-var_dump(generateRandPass(5))
+var_dump(generateRandPass($_GET["length"]))
 ?>
 
 
@@ -49,10 +48,11 @@ var_dump(generateRandPass(5))
 
 <body>
     <form action="" method="get">
-        <label for="">Inserire la llunghezza della password</label>
+        <label for="">Inserire la lunghezza della password</label>
         <input type="number" name="length" id="length">
         <button type="submit">Invia</button>
     </form>
+    <h2><?php echo generateRandPass($_GET["length"]) ?></h2>
 </body>
 
 </html>
