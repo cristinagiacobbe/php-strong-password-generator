@@ -15,26 +15,11 @@ Verificato il corretto funzionamento del nostro codice,
 spostiamo la logica in un file functions.php che includeremo poi nella pagina principale */
 
 
+include __DIR__ . '/function.php';
 
 
-function generateRandPass($length)
-{
-    $possibileChar = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890|!£$%&/()=?^";
-    $password = "";
 
-    for ($i = 0; $i < $length; $i++) {
-        $password .= substr($possibileChar, rand(0, strlen($possibileChar) - 1), 1);
-    }
-    return $password;
-}
-var_dump(generateRandPass($_GET["length"]))
 ?>
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
