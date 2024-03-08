@@ -47,8 +47,32 @@ if (strlen($_SESSION['password']) > 0) {
 
 <body>
     <form action="" method="get">
-        <label for="">Inserire la lunghezza della password</label>
-        <input type="number" name="length" id="length">
+        <div>
+            <label for="">Inserire la lunghezza della password</label>
+            <input type="number" name="length" id="length">
+        </div>
+        <div>
+            <p>Consenti la ripetizione di uno o più caratteri:</p>
+            <input type="radio" id="sì" name="repeat" value="sì">
+            <label for="sì">sì</label><br>
+            <input type="radio" id="no" name="repeat" value="no">
+            <label for="no">no</label><br>
+        </div>
+
+        <div>
+            <p>Come deve essere composta la password?</p>
+            <input type="radio" id="lettere" name="lettere" value="lettere">
+            <label for="lettere">lettere</label><br>
+            <input type="radio" id="numeri" name="numeri" value="numeri">
+            <label for="numeri">numeri</label><br>
+            <input type="radio" id="simboli" name="simboli" value="simboli">
+            <label for="simboli">simboli</label><br>
+        </div>
+
+
+
+
+
         <button type="submit">Invia</button>
         <!--     <h2><?php echo generateRandPass($_GET['length']) ?></h2> -->
     </form>
