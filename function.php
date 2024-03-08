@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function generateRandPass($length)
 {
@@ -8,7 +9,6 @@ function generateRandPass($length)
     for ($i = 0; $i < $length; $i++) {
         $password .= substr($possibileChar, rand(0, strlen($possibileChar) - 1), 1);
     }
-    //header('Location: redirectPass.php');
     return $password;
 };
 

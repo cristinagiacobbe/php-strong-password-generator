@@ -12,13 +12,27 @@ Scriviamo tutto (logica e layout) in un unico file index.php
 
 Milestone 2
 Verificato il corretto funzionamento del nostro codice, 
-spostiamo la logica in un file functions.php che includeremo poi nella pagina principale */
+spostiamo la logica in un file functions.php che includeremo poi nella pagina principale
+
+Milestone 3 (BONUS)
+Invece di visualizzare la password nella index, 
+effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
+
+Milestone 4 (BONUS)
+Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. 
+Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro 
+(es. numeri e simboli, oppure tutti e tre insieme). 
+Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.*/
 
 
 include __DIR__ . '/function.php';
+session_start();
+$_SESSION['password'] = generateRandPass($_GET['length']);
+var_dump($_SESSION['password']);
 
-
-
+if (strlen($_SESSION['password']) > 0) {
+    header('Location: ./redirectPass.php');
+}
 ?>
 
 
@@ -36,8 +50,8 @@ include __DIR__ . '/function.php';
         <label for="">Inserire la lunghezza della password</label>
         <input type="number" name="length" id="length">
         <button type="submit">Invia</button>
+        <!--     <h2><?php echo generateRandPass($_GET['length']) ?></h2> -->
     </form>
-    <h2><?php echo generateRandPass($_GET["length"]) ?></h2>
 </body>
 
 </html>
