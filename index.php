@@ -27,8 +27,11 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 
 include __DIR__ . '/function.php';
 session_start();
-$_SESSION['password'] = generateRandPass($_GET['length']);
+$_SESSION['password'] = generateRandPass($_GET['length'], $_GET['repeat']);
 var_dump($_SESSION['password']);
+
+var_dump(isset($_GET['lettere']));
+
 
 if (strlen($_SESSION['password']) > 0) {
     header('Location: ./redirectPass.php');
