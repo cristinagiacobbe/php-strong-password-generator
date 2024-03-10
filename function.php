@@ -1,26 +1,24 @@
 <?php
 session_start();
 
-function generateRandPass($length, $repeat)
+
+function generateRandPass($length, $repeat, $charL, $charN, $charS)
 {
-    $possibileChar = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890|!£$%&/()=?^";
+    $possibileCharL = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    $possibileCharN = "1234567890";
+    $possibileCharS = "|!£$%&/()=?^";
     $password = "";
+    $newpassword = "";
 
     while (strlen($password) < $length) {
-        $newpassword = substr($possibileChar, rand(0, strlen($possibileChar) - 1), 1);
-
-        if ($repeat === "no") {
-            if (str_contains($password, $newpassword) === false) {
-                $password .= $newpassword;
-            }
-        } else {
-            $password .= $newpassword;
+        if (isset($charL) && !isset($charN) && !isset($charS)) {
+            $newpassword = substr(($possibileCharL), rand(0, strlen(($possibileCharL)) - 1), 1);
+            include __DIR__ . '/repeatFunction.php';
+            reapeatValues($repeat, $password, $newpassword);
         }
     }
     return $password;
-    var_dump($password);
-};
-
+}
 
 ?>
 

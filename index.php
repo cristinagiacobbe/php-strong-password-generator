@@ -25,13 +25,10 @@ Possono essere scelti singolarmente (es. solo numeri) oppure possono essere comb
 Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.*/
 
 
-include __DIR__ . '/function.php';
 session_start();
-$_SESSION['password'] = generateRandPass($_GET['length'], $_GET['repeat']);
+include __DIR__ . '/function.php';
+$_SESSION['password'] = generateRandPass($_GET['length'], $_GET['repeat'], $_GET['lettere'], $_GET['numeri'], $_GET['simboli']);
 var_dump($_SESSION['password']);
-
-var_dump(isset($_GET['lettere']));
-
 
 if (strlen($_SESSION['password']) > 0) {
     header('Location: ./redirectPass.php');
