@@ -1,8 +1,9 @@
 <?php
-session_start();
+include __DIR__ . '/OnlyLettersFunction.php';
 
 
-function generateRandPass($length, $repeat, $charL, $charN, $charS)
+/* function generateRandPass($length, $repeat, $charL, $charN, $charS) */
+function generateRandPass($length, $charL)
 {
     $possibileCharL = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     $possibileCharN = "1234567890";
@@ -11,8 +12,13 @@ function generateRandPass($length, $repeat, $charL, $charN, $charS)
     $newpassword = "";
 
     while (strlen($password) < $length) {
-
-        //solo lettere
+        if (isset($charL)) {
+            OnlyLetters($possibileCharL);
+        }
+    }
+    return $password;
+}
+        /* //solo lettere
         if (isset($charL) && !isset($charN) && !isset($charS)) {
             $newpassword = substr(($possibileCharL), rand(0, strlen(($possibileCharL)) - 1), 1);
             //repeat?    
@@ -95,24 +101,4 @@ function generateRandPass($length, $repeat, $charL, $charN, $charS)
             } else {
                 $password .= $newpassword;
             }
-        }
-    }
-    return $password;
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Function</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
+        } */
