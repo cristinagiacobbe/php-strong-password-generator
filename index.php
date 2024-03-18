@@ -28,7 +28,7 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 session_start();
 include __DIR__ . '/function.php';
 /* $_SESSION['password'] = generateRandPass($_GET['length'], $_GET['repeat'], $_GET['lettere'], $_GET['numeri'], $_GET['simboli']); */
-$_SESSION['password'] = generateRandPass($_GET['length'], $_GET['lettere']);
+$_SESSION['password'] = generateRandPass($_GET['length'], $_GET['lettere'], $_GET['numeri'], $_GET['simboli']);
 var_dump($_SESSION['password']);
 
 if (strlen($_SESSION['password']) > 0) {

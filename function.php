@@ -1,23 +1,28 @@
 <?php
-include __DIR__ . '/OnlyLettersFunction.php';
+include __DIR__ . '/OnlyOneTypeCharFunction.php';
 
 
 /* function generateRandPass($length, $repeat, $charL, $charN, $charS) */
-function generateRandPass($length, $charL)
+function generateRandPass($length, $charL, $charN, $charS)
 {
     $possibileCharL = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     $possibileCharN = "1234567890";
     $possibileCharS = "|!£$%&/()=?^";
     $password = "";
-    $newpassword = "";
+
 
     while (strlen($password) < $length) {
         if (isset($charL)) {
-            OnlyLetters($possibileCharL);
+            $password .= OnlyOneTypeChar($possibileCharL);
+        } elseif (isset($charN)) {
+            $password .= OnlyOneTypeChar($possibileCharN);
+        } elseif (isset($charS)) {
+            $password .= OnlyOneTypeChar($possibileCharS);
         }
     }
     return $password;
 }
+
         /* //solo lettere
         if (isset($charL) && !isset($charN) && !isset($charS)) {
             $newpassword = substr(($possibileCharL), rand(0, strlen(($possibileCharL)) - 1), 1);
