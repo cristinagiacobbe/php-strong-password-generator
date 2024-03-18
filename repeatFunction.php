@@ -1,14 +1,13 @@
 <?php
 
 
-function reapeatValues($repeat, $password, $newpassword)
+function repeatValues($repeat, $password, $newpassword)
 {
     if ($repeat === "no") {
         if (str_contains($password, $newpassword) === false) {
-            $password .= $newpassword;
+            return $password .= $newpassword;
         }
     } else {
-        $password .= $newpassword;
+        return $password .= $newpassword;
     }
-    return $password;
 }

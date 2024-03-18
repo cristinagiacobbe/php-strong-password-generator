@@ -1,24 +1,28 @@
 <?php
 include __DIR__ . '/OnlyOneTypeCharFunction.php';
+include __DIR__ . '/repeatFunction.php';
 
 
-/* function generateRandPass($length, $repeat, $charL, $charN, $charS) */
-function generateRandPass($length, $charL, $charN, $charS)
+function generateRandPass($length, $repeat, $charL, $charN, $charS)
 {
     $possibileCharL = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
     $possibileCharN = "1234567890";
     $possibileCharS = "|!£$%&/()=?^";
     $password = "";
+    $newpassword = "";
 
 
     while (strlen($password) < $length) {
         if (isset($charL)) {
-            $password .= OnlyOneTypeChar($possibileCharL);
-        } elseif (isset($charN)) {
-            $password .= OnlyOneTypeChar($possibileCharN);
+            $newpassword = OnlyOneTypeChar($possibileCharL);
+            repeatValues($repeat, $password, $newpassword);
+        } /* elseif (isset($charN)) {
+            $newpassword = OnlyOneTypeChar($possibileCharN);
+            repeatValues($repeat, $password, $newpassword);
         } elseif (isset($charS)) {
-            $password .= OnlyOneTypeChar($possibileCharS);
-        }
+            $newpassword = OnlyOneTypeChar($possibileCharS);
+            repeatValues($repeat, $password, $newpassword);
+        } */
     }
     return $password;
 }
