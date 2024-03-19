@@ -13,16 +13,7 @@ function generateRandPass($length, $repeat, $charL, $charN, $charS)
 
 
     while (strlen($password) < $length) {
-        if (isset($charL)) {
-            $newpassword = OnlyOneTypeChar($possibileCharL);
-            repeatValues($repeat, $password, $newpassword);
-        } /* elseif (isset($charN)) {
-            $newpassword = OnlyOneTypeChar($possibileCharN);
-            repeatValues($repeat, $password, $newpassword);
-        } elseif (isset($charS)) {
-            $newpassword = OnlyOneTypeChar($possibileCharS);
-            repeatValues($repeat, $password, $newpassword);
-        } */
+        repeatValues($repeat, $password, OnlyOneTypeChar($possibileCharL));
     }
     return $password;
 }
