@@ -5,9 +5,11 @@ function repeatValues($repeat, $password, $newpassword)
 {
     if ($repeat === "no") {
         if (str_contains($password, $newpassword) === false) {
-            return $password .= $newpassword;
+            return $newpassword;
+        } else {
+            return "";
         }
     } else {
-        return $password .= $newpassword;
+        return $newpassword;
     }
 }
