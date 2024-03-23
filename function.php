@@ -11,25 +11,27 @@ function generateRandPass($length, $repeat, $charL, $charN, $charS)
     $possibileCharN = "1234567890";
     $possibileCharS = "|!£$%&/()=?^";
     $password = "";
-    $newpassword = "";
 
 
     while (strlen($password) < $length) {
-        if (isset($charL)) {
+        if (isset($charL) && isset($charN) && !isset($charS)) {
+            $password .=  repeatValues($repeat, $password, CombinedChar($possibileCharL, $possibileCharN));
+        } elseif (isset($charL) && !isset($charN) && isset($charS)) {
+            $password .=  repeatValues($repeat, $password, CombinedChar($possibileCharL, $possibileCharS));
+        } elseif (!isset($charL) && isset($charN) && isset($charS)) {
+            $password .=  repeatValues($repeat, $password, CombinedChar($possibileCharN, $possibileCharS));
+        } elseif (isset($charL) && isset($charN) && isset($charS)) {
+            $password .=  repeatValues($repeat, $password, AllChar($possibileCharL, $possibileCharN, $possibileCharS));
+        } elseif (isset($charL)) {
             $password .=  repeatValues($repeat, $password, OnlyOneTypeChar($possibileCharL));
         } elseif (isset($charN)) {
             $password .=  repeatValues($repeat, $password, OnlyOneTypeChar($possibileCharN));
         } elseif (isset($charS)) {
             $password .=  repeatValues($repeat, $password, OnlyOneTypeChar($possibileCharS));
-        } elseif (isset($charL) && isset($charN) && !isset($charS)) {
-            $password .=  repeatValues($repeat, $password, CombinedChar($possibileCharL, $possibileCharN));
-        } elseif (!isset($charL) && isset($charN) && isset($charS)) {
-            $password .=  repeatValues($repeat, $password, CombinedChar($possibileCharN, $possibileCharS));
-        } elseif (isset($charL) && !isset($charN) && isset($charS)) {
-            $password .=  repeatValues($repeat, $password, CombinedChar($possibileCharL, $possibileCharS));
         } else {
-            $password .=  repeatValues($repeat, $password, AllChar($possibileCharL, $possibileCharS, $possibileCharS));
+            return "Non hai effettuato tutte le selezioni richieste";
         }
     }
+
     return $password;
 }
